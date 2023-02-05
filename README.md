@@ -6,8 +6,15 @@ Bot for the website Globalexam. It helps to spend more than 20 hours on it by re
 ```bash
 python -m pip install -r requirements.txt
 ```
-You also need to install google chrome v104.x    
+You also need to install google chrome v104.x, if you want to use the provided chromedriver.  
+The provided chromedriver works only on a Linux system.   
+You can replace it by another one by downloading it here : [https://chromedriver.chromium.org/downloads](https://chromedriver.chromium.org/downloads)
 ## 🧑🏻‍💻 Usage
+
 ```bash
 python main.py -u <username> <password>
+```
+Without headless mode :
+```bash
+python main.py -u <username> <password> --noheadless
 ```
