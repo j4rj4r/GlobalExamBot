@@ -18,8 +18,9 @@ Without headless mode :
 ```bash
 python main.py -u <username> -p <password> --noheadless
 ```
-Run with docker :
+Run with docker with volume (for logs) or not :
 ```bash
 docker build -t globalbot .
-docker run --shm-size=1g -it globalbot -p <password> -u <username>
+docker run --shm-size=1g -d -it globalbot -p <password> -u <username>
+docker run --shm-size=1g -d -v $PWD/data:/app/data -it globalbot -p <password> -u <username>
 ```
