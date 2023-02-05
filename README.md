@@ -18,3 +18,8 @@ Without headless mode :
 ```bash
 python main.py -u <username> <password> --noheadless
 ```
+Run with docker :
+```bash
+docker build -t globalbot .
+docker run --shm-size=1g -it globalbot -p <password> -u <test>
+```
