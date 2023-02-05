@@ -12,11 +12,11 @@ You can replace it by another one by downloading it here : [https://chromedriver
 ## 🧑🏻‍💻 Usage
 
 ```bash
-python main.py -u <username> <password>
+python main.py -u <username> -p <password>
 ```
 Without headless mode :
 ```bash
-python main.py -u <username> <password> --noheadless
+python main.py -u <username> -p <password> --noheadless
 ```
 Run with docker :
 ```bash
