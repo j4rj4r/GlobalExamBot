@@ -1,0 +1,8 @@
+configuration.yml
+GlobalExambBot/__pycache__/
+data/profiles/prof_*
+.idea/
+__pycache__/
+data/logs/*.log
+data/data.db
+.vscode

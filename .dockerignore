@@ -1,0 +1,7 @@
+./data/logs/*.logs
+./data/data.db
+.vscode
+.gitignore
+.idea/
+./__pycache__/
+./GlobalExambBot/__pycache__/
