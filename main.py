@@ -8,14 +8,14 @@ from GlobalExamBot.database import create_table_sheets
 
 from GlobalExamBot.driver import Driver
 from GlobalExamBot.bot import Bot
-    
+
 def main():
     try:
         helpers = Helpers()
 
          # Configuration of the logging library
         helpers.logging_configuration()
-       
+
         # Load all configuration variables
         config = helpers.load_configuration()
 
@@ -24,7 +24,7 @@ def main():
         create_table_sheets()
 
         profile = f'prof_{config.username}'
-        
+
         logging.info(f'Username : {config.username}')
 
         # Initialize driver and actions

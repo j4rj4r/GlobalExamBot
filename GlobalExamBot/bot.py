@@ -1,5 +1,6 @@
 import logging
 import os
+import sys
 
 from GlobalExamBot.helpers import TypeInField, element_exists, wait_between
 from GlobalExamBot.Sheets import Sheets
@@ -11,6 +12,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 
 class Bot:
+    
     def __init__(self, driver, action, configuration):
         self.driver = driver
         self.actions = action
@@ -18,7 +20,7 @@ class Bot:
         self.email_xpath = '//input[@name="email"]'
         self.password_xpath = '//input[@name="password"]'
         self.index = 0
-        self.scrollcount = 0
+        self.catindex = 0
         self.categories = ['https://exam.global-exam.com/library/study-sheets/categories/grammar',
                              'https://exam.global-exam.com/library/study-sheets/categories/language-functions',
                              'https://exam.global-exam.com/library/study-sheets/categories/vocabulary']
@@ -33,7 +35,7 @@ class Bot:
         password_el.send_keys(Keys.RETURN)
 
     def run(self):
-        
+
         profile = f'prof_{self.configuration.username}'
 
         if not os.path.exists(f'./Profiles/{profile}'):
@@ -49,20 +51,17 @@ class Bot:
         Sheets_action = Sheets(self.driver, self.actions, self.configuration)
 
         while True:
-            self.driver.get('https://exam.global-exam.com/library/study-sheets/categories/grammar')
+            self.driver.get(self.categories[self.catindex])
             Sheets_list = Sheets_action.search()
             if Sheets_list :
                 logging.info(f'Sheets n°{ self.index }')
                 Sheets_action.watch(Sheets_list[0])
                 self.index +=1
-                self.scrollcount = 0
                 wait_between(3,10)
             else:
-                logging.info('All visible Sheets have already been read. Need to scroll down ...')
-                self.driver.execute_script(f"window.scrollTo(0, document.body.scrollHeight)")
-                self.scrollcount += 1
-                wait_between(5,15)
-                if self.scrollcount > 10:
-                    logging.info('End of page or network error.')
-                    self.scrollcount = 0
-                    logging.info(self.driver.get_log('browser'))
+                if self.catindex != len(self.categories) - 1 :
+                    logging.info('All visible Sheets have already been read. Use of the next category.')
+                    self.catindex += 1
+                else:
+                    logging.info('No category available.')
+                    sys.exit(1)

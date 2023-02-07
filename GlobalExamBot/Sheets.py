@@ -21,11 +21,11 @@ class Sheets:
         WebDriverWait(self.driver, 15).until(ec.visibility_of_element_located((By.XPATH, self.pagecard_xpath)))
         page_cards = self.driver.find_elements(by=By.XPATH, value=self.pagecard_xpath)
         card_list = []
-        for card in page_cards : 
+        for card in page_cards :
             if not self.manageSheets.link_exist(card.get_attribute('href')):
                 card_list.append(card)
         return card_list
-    
+
     def watch(self, Sheets_el):
         self.actions.move_to_element(Sheets_el).click(Sheets_el).perform()
         WebDriverWait(self.driver, 15).until(ec.visibility_of_element_located((By.XPATH, self.Sheetscard_xpath)))

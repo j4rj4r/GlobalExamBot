@@ -1,6 +1,9 @@
 import sqlite3
 
 class Database:
+    """
+    Database management
+    """
     def __init__(self, database_link='./data/data.db'):
         """
         Database constructor
@@ -18,7 +21,7 @@ class Database:
         c.execute('''INSERT INTO sheet_links (link) VALUES (:link);''', (link,))
         c.close()
         connection.commit()
-   
+
     def link_exist(self, link):
         """
         Returns true if the link exists in the database.

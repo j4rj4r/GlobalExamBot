@@ -3,6 +3,9 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.chrome.options import Options
 
 class Driver:
+    """
+    Browser management
+    """
     def __init__(self, profile):
         self.profile = profile
         self.chrome_options = None
@@ -10,6 +13,9 @@ class Driver:
         self.action = None
 
     def setup(self, log_path='./data/logs/', headless=True):
+        """
+        Browser configuration
+        """
         self.chrome_options = Options()
 
         # Anti bot detection
@@ -22,7 +28,7 @@ class Driver:
 
         # Maximize Browser
         self.chrome_options.add_argument('--start-maximized')
-        
+
         # Headless Mode
         if headless:
             self.chrome_options.add_argument('--headless')
@@ -44,7 +50,6 @@ class Driver:
         self.chrome_options.add_argument("--disable-low-res-tiling")
         self.chrome_options.add_argument("--log-level=3")
         self.chrome_options.add_argument("--silent")
-        
 
         # Disable save password
         prefs = {'credentials_enable_service': False,
@@ -54,12 +59,12 @@ class Driver:
         # Set profile
         self.chrome_options.add_argument(f'user-data-dir=./data/profiles/{self.profile}')
 
-        self.driver = webdriver.Chrome(f'./ChromeDriver/chromedriver',options=self.chrome_options, service_args=[f'--log-path={log_path}ChromeDriver.log'])
+        self.driver = webdriver.Chrome('./ChromeDriver/chromedriver',options=self.chrome_options, service_args=[f'--log-path={log_path}ChromeDriver.log'])
         self.action = ActionChains(self.driver)
         return self.driver, self.action
-    
+
     def get_driver(self):
         return self.driver
-    
+
     def get_action(self):
         return self.action

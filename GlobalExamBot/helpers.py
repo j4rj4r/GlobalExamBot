@@ -38,7 +38,7 @@ class Helpers:
     def load_configuration(self):
         """
         this method allows you to load arguments.
-        :return: args 
+        :return: args
         """
         header()
         # Load all configuration variables
@@ -50,10 +50,13 @@ class Helpers:
         return args
 
     def logging_configuration(self, logging_level=logging.INFO, filename='data/logs/bot_globalexam.log'):
+        """
+        Log configuration
+        """
         logging.basicConfig(filename=filename,
                             level=logging_level,
                             format='%(asctime)s - %(levelname)s - %(message)s')
-                
+
         root_logger = logging.getLogger()
         root_logger.setLevel(logging_level)
 
@@ -74,26 +77,26 @@ def header():
     logging.info('==\t                   version : ' + const.VERSION + '                         \t==')
     logging.info('==\t=============================================================\t==')
 
-def wait_between( min, max):
+def wait_between( minimum, maximum):
     """
-    Wait random time in second beetween min and max seconds, to have an not linear behavior and be more human.
+    Wait random time in second beetween min and max seconds,
+    to have an not linear behavior and be more human.
     """
-    rand=uniform(min, max)
+    rand=uniform(minimum, maximum)
     sleep(rand)
 
-def TypeInField(element, xpath, myValue):
+def TypeInField(element, xpath, value):
     """Type in a field"""
-    val = myValue
     elem = element.find_element(by=By.XPATH, value=xpath)
-    for i in range(len(val)):
-        elem.send_keys(val[i])
+    for ele in enumerate(value):
+        elem.send_keys(ele[1])
         wait_between(0.2, 0.4)
     wait_between(0.4, 0.7)
 
 def element_exists(xpath, element, by=By.XPATH):
     """
     Check if an element exist
-    
+
     :return: Boolean
     """
     try:
