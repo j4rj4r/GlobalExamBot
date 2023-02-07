@@ -1,7 +1,10 @@
 ./data/logs/*.logs
 ./data/data.db
+./data/profiles/prof_*
 .vscode
 .gitignore
 .idea/
 ./__pycache__/
 ./GlobalExambBot/__pycache__/
+.git
+*.md
