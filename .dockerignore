@@ -8,3 +8,4 @@
 ./GlobalExambBot/__pycache__/
 .git
 *.md
+.github
