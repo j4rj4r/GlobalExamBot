@@ -9,7 +9,7 @@ on:
       - '.dockerignore'
 
 jobs:
-  build_and_push:
+  Docker:
     runs-on: ubuntu-latest
     steps:
       -
