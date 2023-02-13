@@ -1,7 +1,12 @@
+run-name: Deploy to Docker by @${{ github.actor }}
+
 on:
   push:
     branches:
       - 'main'
+    paths-ignore:
+      - 'README.md'
+      - '.dockerignore'
 
 jobs:
   build_and_push:
