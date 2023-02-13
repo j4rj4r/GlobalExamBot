@@ -6,7 +6,7 @@ on:
       - 'main'
     paths-ignore:
       - 'README.md'
-      - '.dockerignore'
+      - '.gitignore'
 
 jobs:
   Docker:
