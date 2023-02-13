@@ -20,7 +20,10 @@ python main.py -u <username> -p <password> --noheadless
 ```
 Run with docker with volume (for logs) or not :
 ```bash
-docker build -t globalbot .
+docker build -t globalbot .  
+or
+docker pull j4rj4r/globalexambot:latest
+
 docker run --shm-size=1g -d -it globalbot -p <password> -u <username>
 docker run --shm-size=1g -d -v $PWD/data:/app/data -it globalbot -p <password> -u <username>
 ```
