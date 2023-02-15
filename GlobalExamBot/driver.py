@@ -64,7 +64,13 @@ class Driver:
         return self.driver, self.action
 
     def get_driver(self):
+        """
+        Get Driver
+        """
         return self.driver
 
     def get_action(self):
+        """
+        Get action
+        """
         return self.action
