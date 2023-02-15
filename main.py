@@ -10,11 +10,11 @@ from GlobalExamBot.driver import Driver
 from GlobalExamBot.bot import Bot
 
 def main():
+    """
+    Main function
+    """
     try:
         helpers = Helpers()
-
-         # Configuration of the logging library
-        helpers.logging_configuration()
 
         # Load all configuration variables
         config = helpers.load_configuration()
@@ -46,4 +46,5 @@ def main():
             sys.exit(1)
 
 if __name__ == "__main__":
+    Helpers().logging_configuration()
     main()

@@ -26,6 +26,9 @@ class Bot:
                              'https://exam.global-exam.com/library/study-sheets/categories/vocabulary']
     
     def login(self):
+        """
+        Actions for the login form
+        """
         email_el = WebDriverWait(self.driver, 10).until(ec.visibility_of_element_located((By.XPATH, self.email_xpath)))
         self.actions.move_to_element(email_el).click(email_el).perform()
         TypeInField(self.driver, self.email_xpath, self.configuration.username)
@@ -35,7 +38,7 @@ class Bot:
         password_el.send_keys(Keys.RETURN)
 
     def run(self):
-
+        
         profile = f'prof_{self.configuration.username}'
 
         if not os.path.exists(f'./Profiles/{profile}'):
@@ -48,14 +51,14 @@ class Bot:
 
         logging.info('Logged in')
 
-        Sheets_action = Sheets(self.driver, self.actions, self.configuration)
+        sheets_actions = Sheets(self.driver, self.actions, self.configuration)
 
         while True:
             self.driver.get(self.categories[self.catindex])
-            Sheets_list = Sheets_action.search()
-            if Sheets_list :
+            sheets_list = sheets_actions.search()
+            if sheets_list :
                 logging.info(f'Sheets n°{ self.index }')
-                Sheets_action.watch(Sheets_list[0])
+                sheets_actions.watch(sheets_list[0])
                 self.index +=1
                 wait_between(3,10)
             else:
